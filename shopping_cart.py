@@ -48,6 +48,7 @@ while True:
     # ASK FOR USER INPUT 
 
     product_id = input("Please input a product identifier")
+    
     print(product_id) #>"9"
     print(type(product_id)) #> str
     if product_id == "DONE":
@@ -68,6 +69,9 @@ while True:
         if str(x["id"]) == str(product_id): 
             # this is a match
             matching_products.append(x)
+        else: 
+            print("Hey, are you sure that product identifier is correct? Please try again!")
+        
 
     #print(matching_products)
     #print(type(matching_products))
