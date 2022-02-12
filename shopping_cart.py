@@ -51,20 +51,20 @@ def to_usd(my_price):
 total_price = 0 
 selected_ids = []
 
-while True:
+for x in products:
     selected_id = input("Please input a product identifier") # > string 
     if selected_id == "DONE" or selected_id == "done" or selected_id == "Done": 
         break 
-    else: 
-       # matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-        # matching_product = matching_products[0]
-        # total_price = total_price + matching_product["price"]
-        # print("SELECTED PRODCUT: " + matching_product["name"] + " " + str(matching_product["price"])) #>"9"
+    elif str(x["id"]) == str(selected_id): 
+        # matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+            # matching_product = matching_products[0]
+            # total_price = total_price + matching_product["price"]
+            # print("SELECTED PRODCUT: " + matching_product["name"] + " " + str(matching_product["price"])) #>"9"
         selected_ids.append(selected_id)
-
-# INFO DISPLY / OUTPUT 
-
-#print(selected_ids)
+    
+    else: 
+        print("Hey, are you sure that product identifier is correct? Please try again!")
+            
 
 for selected_id in selected_ids: 
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
@@ -73,7 +73,20 @@ for selected_id in selected_ids:
     print("SELECTED PRODCUT: " + matching_product["name"] + " " + str(matching_product["price"])) #>"9"
 
 
+# INFO DISPLY / OUTPUT 
 
+#print(selected_ids)
+
+
+from datetime import datetime
+from datetime import date 
+today = date.today()
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("---------------------------------------")
+print("Meow Meow Grocery")
+print("---------------------------------------")
+print("CHECK OUT AT: ", today, current_time)
 print("TOTAL PRICE: " + str(total_price))  # format as USD 
 
 
