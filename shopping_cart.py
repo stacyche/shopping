@@ -71,11 +71,6 @@ while True:
 
             
 
-for selected_id in selected_ids: 
-    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-    matching_product = matching_products[0]
-    total_price = total_price + matching_product["price"]
-    print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"])) #>"9"
 
 
 # INFO DISPLY / OUTPUT 
@@ -90,10 +85,26 @@ now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 print("---------------------------------------")
 print("Meow Meow Grocery")
+print("(123)456-789")
 print("---------------------------------------")
 print("CHECK OUT AT: ", today, current_time)
-print("TOTAL PRICE: " + str(total_price))  # format as USD 
+print("---------------------------------------")
+print("SELECTED PRODUCTS:")
+for selected_id in selected_ids: 
+    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+    matching_product = matching_products[0]
+    total_price = total_price + matching_product["price"]
+    print("... " + matching_product["name"] + " " + "(" + str(to_usd(matching_product["price"])) + ")") #>"9"
 
+print("---------------------------------------")
+print("SUBTOTAL:", to_usd(total_price))
+tax = total_price * 0.06
+print("TAX", to_usd(tax))
+totalprice = total_price + float(tax)
+print("TOTAL: ", to_usd(totalprice))  # format as USD 
+print("---------------------------------------")
+print("THANKS, SEE YOU AGAIN SOON!")
+print("---------------------------------------")
 
 
 
